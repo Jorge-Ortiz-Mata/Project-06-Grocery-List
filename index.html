@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Project 06. Grocery Bud List.</title>
+</head>
+<body>
+    <div class="container">
+        <main class="project06">
+            <h1 class="mainTitle">Project 06. Grocery Bud List.</h1>
+            <section class="projectSection">
+                <p class="projectSectionInstructions">In this project, you will be able to add items to the list. Write the item into the box, and click in the button 'Submit' to send the information and save it.</p>
+                <form class="inputsForm">
+                    <input type="text" id="inputBox" placeholder="Add you item here... ">
+                    <button type="button" id="submitButton">Submit.</button>
+                </form>
+            </section>
+            <section class="messageAdd">
+                <p class="goodParameter">Item added to the list.</p>
+                <p class="badParameter">Sorry, you must insert at least one value.</p>
+                <p class="clearParameter">You've claned the list.</p>
+            </section>
+            <section class="sectionList">
+                <div class="listObjects"></div>
+                <button class="clearListButton">Clear list.</button>
+            </section>
+        </main>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>

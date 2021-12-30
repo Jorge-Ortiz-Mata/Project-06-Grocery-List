@@ -1,0 +1,192 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+    background-color: #eafcff;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    animation: animationJorge;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animationJorge {
+    0%{
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.project06 {
+    border: 0px solid #012d34;
+    margin: auto auto auto auto;
+    height: 500px;
+    box-shadow: 0px 0px 10px 5px #012d345e;
+    padding: 50px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+
+.mainTitle {
+    color: #012d34;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.projectSection {
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+}
+
+.projectSectionInstructions {
+    margin: 20px auto 10px auto;
+    width: 450px;
+    line-height: 16px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.inputsForm {
+    display: flex;
+    justify-content: center;
+    margin: auto auto auto auto;
+}
+
+#inputBox {
+    border: 0px;
+    padding: 7px;
+    margin: auto 30px auto auto;
+    width: 200px;
+    box-shadow: 0px 0px 10px 5px #012d345e;
+    color: #206975;
+    border-radius: 5px;
+}
+
+#submitButton {
+    border: 0px;
+    padding: 5px;
+    width: 100px;
+    margin: auto auto auto 10px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #012d345e;
+}
+
+#submitButton:hover {
+    color: #ffffff;
+    background-color: #012d34;
+}
+
+/* ----------------- MESSAGES DISPLAY ------------------- */
+
+.messageAdd {
+    height: 60px;
+    margin: 10px auto 0px auto;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.goodParameter, .badParameter, .clearParameter {
+    font-size: 14px;
+    text-align: center;
+    font-weight: 900;
+    margin: auto auto auto auto;
+    display: none;
+    padding: 10px;
+}
+
+.goodParameter {
+    background-color: #7af092;
+    color: #01340b;
+}
+
+.badParameter {
+    background-color: #f07a7a;
+    color: #340101;
+}
+
+.clearParameter {
+    background-color: #7aeef0;
+    color: #012b34;
+}
+
+.showMessage {
+    display: flex;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 5px #035b6957;
+}
+
+/* ----------------- LIST SECTION. ------------------- */
+
+.sectionList {
+    margin: 10px auto auto auto;
+    width: 400px;
+    text-align: center;
+}
+
+.listObjects {
+    display: flex;
+    flex-direction: column;
+}
+
+.article {
+    display: flex;
+    margin: 5px auto auto auto;
+    justify-content: space-between;
+    height: 45px;
+    width: 100%;
+    box-shadow: 0px 0px 10px 2px #012d344a;
+    border-radius: 5px;
+}
+
+article p {
+    margin: auto auto auto 60px;
+}
+
+#removeButton {
+    border: 0px;
+    padding: 5px;
+    width: 80px;
+    margin: auto 50px auto auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 7px 2px #012d345e;
+}
+
+#removeButton:hover{
+    color: #ffffff;
+    background-color: #012d34;
+}
+
+/* ----------------- CLEAR LIST SECTION. ------------------- */
+
+.clearListButton {
+    border: 0px;
+    padding: 5px;
+    width: 100px;
+    margin: 20px auto 10px auto;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 5px #012d345e;
+}
+
+.clearListButton:hover {
+    color: #ffffff;
+    background-color: #012d34;
+}
