@@ -155,13 +155,26 @@ body {
     width: 100%;
     box-shadow: 0px 0px 10px 2px #012d344a;
     border-radius: 5px;
+    animation: articleAnimation;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes articleAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+    
 }
 
 article p {
     margin: auto auto auto 60px;
 }
 
-#removeButton {
+.removeButton {
     border: 0px;
     padding: 5px;
     width: 80px;
@@ -170,7 +183,7 @@ article p {
     box-shadow: 0px 0px 7px 2px #012d345e;
 }
 
-#removeButton:hover{
+.removeButton:hover{
     color: #ffffff;
     background-color: #012d34;
 }

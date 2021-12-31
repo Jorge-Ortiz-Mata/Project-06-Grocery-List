@@ -1,4 +1,14 @@
 
+// --------------------------- HELP. ------------------------------
+
+// ----------   const countries = ['Mexico', 'USA', 'Brazil', 'Argentina', 'Canada', 'Francia', 'Alemania', 'Bélgica'];
+// ----------   console.log(countries);
+
+// ----------   for (let i = 0; i < 7; i++) {
+    // ----------   countries.splice(0, 1);
+    // ----------   console.log(countries);
+// ----------   }
+
 // ---------------------------- CREATE OBJECTS. ------------------------------
 
 const inputBox = document.getElementById('inputBox');
@@ -19,10 +29,37 @@ setItemsToListFunction = (numbers) => {
         const article = document.createElement('article');
         listObjects.appendChild(article);
         article.classList.add('article');
-        article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p> <button id="removeButton">Remove</button>`;
+        article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p> <button class="removeButton">Remove</button>`;
     }
 
-} 
+    if(numbers.length == 1) {
+        const removeButton2 = document.querySelector('.removeButton');
+        removeButton2.addEventListener('click', function () {
+            const article = removeButton2.parentElement;
+            article.remove();
+            numbers.splice(0,1);
+            localStorage.setItem('Numbers', JSON.stringify(numbers));
+        });
+    }
+
+    else if(numbers.length > 1) {
+        const removeButtons1 = document.querySelectorAll('.removeButton');
+
+        removeButtons1.forEach(function(removeButton1) {
+
+            removeButton1.addEventListener('click', function () {
+
+                removeButtons1.forEach(function(removeButtonNew1) {
+
+                    if (removeButtonNew1 === removeButton1) {
+                        const article = removeButton1.parentElement;
+                        article.remove();
+                    }
+                });
+            });
+        });
+    }
+}
 
 // ---------------------------- EVENT LISTENERS ------------------------------
 
@@ -39,11 +76,39 @@ window.addEventListener('load', function () {
             const article = document.createElement('article');
             listObjects.appendChild(article);
             article.classList.add('article');
-            article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p><button id="removeButton">Remove</button>`;
+            article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p><button class="removeButton">Remove</button>`;
+        }   
+
+        if(numbers.length == 1) {
+            const removeButton2 = document.querySelector('.removeButton');
+            removeButton2.addEventListener('click', function () {
+                const article = removeButton2.parentElement;
+                article.remove();
+                numbers.splice(0,1);
+                localStorage.setItem('Numbers', JSON.stringify(numbers));
+
+            });
+        }
+
+        else if (numbers.length > 1) {
+            const removeButtons1 = document.querySelectorAll('.removeButton');
+
+            removeButtons1.forEach(function(removeButton1) {
+
+                removeButton1.addEventListener('click', function () {
+
+                    removeButtons1.forEach(function(removeButtonNew1) {
+
+                    if (removeButtonNew1 === removeButton1) {
+                        const articles = document.querySelectorAll('.article');
+                        console.log(articles[0]);
+                        }
+                    });
+                });
+            });
         }
     }
-
-})
+});
 
 submitButton.addEventListener('click', function () {
 
@@ -71,7 +136,7 @@ submitButton.addEventListener('click', function () {
 
         setTimeout (showGoodMessageFunction = () => {
             goodParameter.classList.remove('showMessage');
-        }, 1000);
+        }, 2000);
 
     }
 
@@ -82,7 +147,7 @@ submitButton.addEventListener('click', function () {
 
         setTimeout (showBadMessageFunction = () => {
             badParameter.classList.remove('showMessage');
-        }, 1000);
+        }, 2000);
     }
 });
 
@@ -95,5 +160,5 @@ clearListButton.addEventListener('click', function () {
 
     setTimeout (showClrMessageFunction = () => {
         clearParameter.classList.remove('showMessage');
-    }, 1000);
+    }, 2000);
 });
