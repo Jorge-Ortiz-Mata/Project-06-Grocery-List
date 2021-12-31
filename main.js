@@ -12,6 +12,8 @@ const removeParameter = document.querySelector('.removeParameter');
 
 // ---------------------------- FUNCTIONS ------------------------------
 
+// ---- Update items list. ---
+
 updateGroceryListFunction = (numbers) => {
     listObjects.innerHTML=``;
     
@@ -21,7 +23,11 @@ updateGroceryListFunction = (numbers) => {
         article.classList.add('article');
         article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p> <button class="removeButton">Remove</button>`;
     }
+    
+    
 }
+
+// ---- Show Remove message on web app. ---
 
 removeItemMessageFunction = () => {
     setTimeout (showRemoveMessageFunction = () => {
@@ -30,8 +36,10 @@ removeItemMessageFunction = () => {
 
     setTimeout (showRemoveMessageFunction = () => {
         removeParameter.classList.remove('showMessage');
-    }, 2000);
+    }, 1000);
 }
+
+// ---- Set items to the once you click submit ---
 
 setItemsToListFunction = () => {
     updateGroceryListFunction(numbers);
@@ -39,6 +47,7 @@ setItemsToListFunction = () => {
     if(numbers.length == 1) {
         const removeButton2 = document.querySelector('.removeButton');
         removeButton2.addEventListener('click', function () {
+            removeItemMessageFunction ();   // Message of remove item.
             const article = removeButton2.parentElement;
             article.remove();
             numbers.splice(0,1);
@@ -53,13 +62,12 @@ setItemsToListFunction = () => {
 
             removeButton1.addEventListener('click', function () {
 
-                removeItemMessageFunction ();
+                removeItemMessageFunction ();   // Message of remove item.
 
                 removeButtons1.forEach(function(removeButtonNew1) {
-
+                    let i = 0;
                     if (removeButtonNew1 === removeButton1) {
                         const articles = listObjects.querySelectorAll('.article');
-                        let i = 0;
                         const article = removeButton1.parentElement;
 
                         articles.forEach(function (articleNew) {
@@ -83,6 +91,8 @@ setItemsToListFunction = () => {
 
 // ---------------------------- EVENT LISTENERS ------------------------------
 
+// ---- Window event listener. ---
+
 window.addEventListener('load', function () {
 
     let localStorageStatus = localStorage.getItem('Numbers');
@@ -95,6 +105,7 @@ window.addEventListener('load', function () {
         if(numbers.length == 1) {
             const removeButton2 = document.querySelector('.removeButton');
             removeButton2.addEventListener('click', function () {
+                removeItemMessageFunction ();   // Message of remove item.
                 const article = removeButton2.parentElement;
                 article.remove();
                 numbers.splice(0,1);
@@ -139,6 +150,8 @@ window.addEventListener('load', function () {
     }
 });
 
+// ---- Submit button event. ---
+
 submitButton.addEventListener('click', function () {
 
     let localStorageStatus = localStorage.getItem('Numbers');
@@ -165,7 +178,7 @@ submitButton.addEventListener('click', function () {
 
         setTimeout (showGoodMessageFunction = () => {
             goodParameter.classList.remove('showMessage');
-        }, 2000);
+        }, 1000);
     }   
 
     else if(inputValue.length === 0) {
@@ -175,7 +188,7 @@ submitButton.addEventListener('click', function () {
 
         setTimeout (showBadMessageFunction = () => {
             badParameter.classList.remove('showMessage');
-        }, 2000);
+        }, 1000);
     }
 });
 
@@ -188,6 +201,5 @@ clearListButton.addEventListener('click', function () {
 
     setTimeout (showClrMessageFunction = () => {
         clearParameter.classList.remove('showMessage');
-    }, 2000);
+    }, 1000);
 });
-
