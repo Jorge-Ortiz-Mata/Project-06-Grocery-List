@@ -1,14 +1,4 @@
 
-// --------------------------- HELP. ------------------------------
-
-// ----------   const countries = ['Mexico', 'USA', 'Brazil', 'Argentina', 'Canada', 'Francia', 'Alemania', 'Bélgica'];
-// ----------   console.log(countries);
-
-// ----------   for (let i = 0; i < 7; i++) {
-    // ----------   countries.splice(0, 1);
-    // ----------   console.log(countries);
-// ----------   }
-
 // ---------------------------- CREATE OBJECTS. ------------------------------
 
 const inputBox = document.getElementById('inputBox');
@@ -23,7 +13,6 @@ const removeParameter = document.querySelector('.removeParameter');
 // ---------------------------- FUNCTIONS ------------------------------
 
 updateGroceryListFunction = (numbers) => {
-
     listObjects.innerHTML=``;
     
     for(let i = 0; i < numbers.length; i++) {
@@ -45,7 +34,6 @@ removeItemMessageFunction = () => {
 }
 
 setItemsToListFunction = () => {
-
     updateGroceryListFunction(numbers);
 
     if(numbers.length == 1) {
@@ -70,7 +58,7 @@ setItemsToListFunction = () => {
                 removeButtons1.forEach(function(removeButtonNew1) {
 
                     if (removeButtonNew1 === removeButton1) {
-                        const articles = document.querySelectorAll('.article');
+                        const articles = listObjects.querySelectorAll('.article');
                         let i = 0;
                         const article = removeButton1.parentElement;
 
@@ -80,9 +68,7 @@ setItemsToListFunction = () => {
                                 numbers = JSON.parse(localStorage.getItem('Numbers'));
                                 numbers.splice(i, 1);
                                 localStorage.setItem('Numbers', JSON.stringify(numbers));
-
                                 updateGroceryListFunction(numbers);
-
                             }
                             else if(article !== articleNew) {
                                 i++;
@@ -129,7 +115,7 @@ window.addEventListener('load', function () {
                     removeButtons1.forEach(function(removeButtonNew1) {
 
                         if (removeButtonNew1 === removeButton1) {
-                            const articles = document.querySelectorAll('.article');
+                            const articles = listObjects.querySelectorAll('.article');
                             let i = 0;
                             const article = removeButton1.parentElement;
 
@@ -140,7 +126,6 @@ window.addEventListener('load', function () {
                                     numbers.splice(i, 1);
                                     localStorage.setItem('Numbers', JSON.stringify(numbers)); 
                                     updateGroceryListFunction(numbers);
-
                                 }
                                 else if(article !== articleNew) {
                                     i++;
@@ -205,3 +190,4 @@ clearListButton.addEventListener('click', function () {
         clearParameter.classList.remove('showMessage');
     }, 2000);
 });
+
