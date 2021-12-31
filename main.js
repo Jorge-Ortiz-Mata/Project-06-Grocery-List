@@ -18,10 +18,11 @@ const clearListButton = document.querySelector('.clearListButton');
 const goodParameter = document.querySelector('.goodParameter');
 const badParameter = document.querySelector('.badParameter');
 const clearParameter = document.querySelector('.clearParameter');
+const removeParameter = document.querySelector('.removeParameter');
 
 // ---------------------------- FUNCTIONS ------------------------------
 
-setItemsToListFunction = (numbers) => {
+updateGroceryListFunction = (numbers) => {
 
     listObjects.innerHTML=``;
     
@@ -31,6 +32,21 @@ setItemsToListFunction = (numbers) => {
         article.classList.add('article');
         article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p> <button class="removeButton">Remove</button>`;
     }
+}
+
+removeItemMessageFunction = () => {
+    setTimeout (showRemoveMessageFunction = () => {
+        removeParameter.classList.add('showMessage');
+    }, 0);
+
+    setTimeout (showRemoveMessageFunction = () => {
+        removeParameter.classList.remove('showMessage');
+    }, 2000);
+}
+
+setItemsToListFunction = () => {
+
+    updateGroceryListFunction(numbers);
 
     if(numbers.length == 1) {
         const removeButton2 = document.querySelector('.removeButton');
@@ -49,11 +65,29 @@ setItemsToListFunction = (numbers) => {
 
             removeButton1.addEventListener('click', function () {
 
+                removeItemMessageFunction ();
+
                 removeButtons1.forEach(function(removeButtonNew1) {
 
                     if (removeButtonNew1 === removeButton1) {
+                        const articles = document.querySelectorAll('.article');
+                        let i = 0;
                         const article = removeButton1.parentElement;
-                        article.remove();
+
+                        articles.forEach(function (articleNew) {
+                            if(article === articleNew) {
+                                i = i;
+                                numbers = JSON.parse(localStorage.getItem('Numbers'));
+                                numbers.splice(i, 1);
+                                localStorage.setItem('Numbers', JSON.stringify(numbers));
+
+                                updateGroceryListFunction(numbers);
+
+                            }
+                            else if(article !== articleNew) {
+                                i++;
+                            }
+                        });
                     }
                 });
             });
@@ -70,14 +104,7 @@ window.addEventListener('load', function () {
 
     if (localStorageStatus !== null) {
 
-        listObjects.innerHTML=``;
-
-        for(let i = 0; i < numbers.length; i++) {
-            const article = document.createElement('article');
-            listObjects.appendChild(article);
-            article.classList.add('article');
-            article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p><button class="removeButton">Remove</button>`;
-        }   
+        updateGroceryListFunction (numbers);  
 
         if(numbers.length == 1) {
             const removeButton2 = document.querySelector('.removeButton');
@@ -86,22 +113,39 @@ window.addEventListener('load', function () {
                 article.remove();
                 numbers.splice(0,1);
                 localStorage.setItem('Numbers', JSON.stringify(numbers));
-
             });
         }
 
         else if (numbers.length > 1) {
+
             const removeButtons1 = document.querySelectorAll('.removeButton');
 
             removeButtons1.forEach(function(removeButton1) {
 
                 removeButton1.addEventListener('click', function () {
 
+                    removeItemMessageFunction ();
+
                     removeButtons1.forEach(function(removeButtonNew1) {
 
-                    if (removeButtonNew1 === removeButton1) {
-                        const articles = document.querySelectorAll('.article');
-                        console.log(articles[0]);
+                        if (removeButtonNew1 === removeButton1) {
+                            const articles = document.querySelectorAll('.article');
+                            let i = 0;
+                            const article = removeButton1.parentElement;
+
+                            articles.forEach(function (articleNew) {
+                                if(article === articleNew) {
+                                    i = i;
+                                    numbers = JSON.parse(localStorage.getItem('Numbers'));
+                                    numbers.splice(i, 1);
+                                    localStorage.setItem('Numbers', JSON.stringify(numbers)); 
+                                    updateGroceryListFunction(numbers);
+
+                                }
+                                else if(article !== articleNew) {
+                                    i++;
+                                }
+                            });
                         }
                     });
                 });
@@ -137,8 +181,7 @@ submitButton.addEventListener('click', function () {
         setTimeout (showGoodMessageFunction = () => {
             goodParameter.classList.remove('showMessage');
         }, 2000);
-
-    }
+    }   
 
     else if(inputValue.length === 0) {
         setTimeout (showBadMessageFunction = () => {

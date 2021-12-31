@@ -104,7 +104,7 @@ body {
     width: 200px;
 }
 
-.goodParameter, .badParameter, .clearParameter {
+.goodParameter, .badParameter, .clearParameter, .removeParameter {
     font-size: 14px;
     text-align: center;
     font-weight: 900;
@@ -118,7 +118,7 @@ body {
     color: #01340b;
 }
 
-.badParameter {
+.badParameter, .removeParameter {
     background-color: #f07a7a;
     color: #340101;
 }
@@ -127,6 +127,7 @@ body {
     background-color: #7aeef0;
     color: #012b34;
 }
+
 
 .showMessage {
     display: flex;
