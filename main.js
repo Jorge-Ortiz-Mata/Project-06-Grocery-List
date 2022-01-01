@@ -1,14 +1,26 @@
 
-// ---------------------------- CREATE OBJECTS. ------------------------------
+// ---------------------------- SELECTING OBJECTS. ------------------------------
+
+// ---- HTML Inputs Form class. ---
 
 const inputBox = document.getElementById('inputBox');
-const submitButton = document.getElementById('submitButton');
 const listObjects = document.querySelector('.listObjects');
+
+// ---- Buttons. ----
+
+const submitButton = document.getElementById('submitButton');
 const clearListButton = document.querySelector('.clearListButton');
+
+// ---- Messages. ----
+
 const goodParameter = document.querySelector('.goodParameter');
 const badParameter = document.querySelector('.badParameter');
 const clearParameter = document.querySelector('.clearParameter');
 const removeParameter = document.querySelector('.removeParameter');
+
+// ---- Get local storage value. ----
+
+let localStorageStatus = localStorage.getItem('Numbers');
 
 // ---------------------------- FUNCTIONS ------------------------------
 
@@ -23,8 +35,28 @@ updateGroceryListFunction = (numbers) => {
         article.classList.add('article');
         article.innerHTML = `<p>${i}. <b>${numbers[i]}</b></p> <button class="removeButton">Remove</button>`;
     }
-    
-    
+    // ---- Remove buttons event. ---
+
+    const articles = document.querySelectorAll('.article');
+    const removeButtons = document.querySelectorAll('.removeButton');
+
+    removeButtons.forEach(function (removeButton) {
+
+        removeButton.addEventListener('click', function () {
+            console.log(removeButtons);
+            removeButtons.forEach(function (removeButtonNew) {
+                let i = 0;
+                if(removeButton === removeButtonNew) {
+                    i++;
+                    console.log(i);
+                }
+                else if (removeButton !== removeButtonNew) {
+                    i = i;
+                }
+            });
+        removeItemMessageFunction();
+    });
+});
 }
 
 // ---- Show Remove message on web app. ---
@@ -39,129 +71,48 @@ removeItemMessageFunction = () => {
     }, 1000);
 }
 
-// ---- Set items to the once you click submit ---
+// ---- Show Bad message on web app. ---
 
-setItemsToListFunction = () => {
-    updateGroceryListFunction(numbers);
+emptyBoxMessageFunction = () => {
+    setTimeout (showBadMessageFunction = () => {
+        badParameter.classList.add('showMessage');
+    }, 0);
 
-    if(numbers.length == 1) {
-        const removeButton2 = document.querySelector('.removeButton');
-        removeButton2.addEventListener('click', function () {
-            removeItemMessageFunction ();   // Message of remove item.
-            const article = removeButton2.parentElement;
-            article.remove();
-            numbers.splice(0,1);
-            localStorage.setItem('Numbers', JSON.stringify(numbers));
-        });
-    }
+    setTimeout (showBadMessageFunction = () => {
+        badParameter.classList.remove('showMessage');
+    }, 1000);
+}
 
-    else if(numbers.length > 1) {
-        const removeButtons1 = document.querySelectorAll('.removeButton');
+// ---- Show Clear message on web app. ---
 
-        removeButtons1.forEach(function(removeButton1) {
+clearListMessageFunction = () => {
+    setTimeout (showClrMessageFunction = () => {
+    clearParameter.classList.add('showMessage');
+    }, 0);
 
-            removeButton1.addEventListener('click', function () {
-
-                removeItemMessageFunction ();   // Message of remove item.
-
-                removeButtons1.forEach(function(removeButtonNew1) {
-                    let i = 0;
-                    if (removeButtonNew1 === removeButton1) {
-                        const articles = listObjects.querySelectorAll('.article');
-                        const article = removeButton1.parentElement;
-
-                        articles.forEach(function (articleNew) {
-                            if(article === articleNew) {
-                                i = i;
-                                numbers = JSON.parse(localStorage.getItem('Numbers'));
-                                numbers.splice(i, 1);
-                                localStorage.setItem('Numbers', JSON.stringify(numbers));
-                                updateGroceryListFunction(numbers);
-                            }
-                            else if(article !== articleNew) {
-                                i++;
-                            }
-                        });
-                    }
-                });
-            });
-        });
-    }
+    setTimeout (showClrMessageFunction = () => {
+    clearParameter.classList.remove('showMessage');
+    }, 1000);
 }
 
 // ---------------------------- EVENT LISTENERS ------------------------------
 
-// ---- Window event listener. ---
+// ---- Print array on document if localStorageStatus is different of null. ----
 
-window.addEventListener('load', function () {
-
-    let localStorageStatus = localStorage.getItem('Numbers');
-    numbers = JSON.parse(localStorage.getItem('Numbers'));
-
-    if (localStorageStatus !== null) {
-
-        updateGroceryListFunction (numbers);  
-
-        if(numbers.length == 1) {
-            const removeButton2 = document.querySelector('.removeButton');
-            removeButton2.addEventListener('click', function () {
-                removeItemMessageFunction ();   // Message of remove item.
-                const article = removeButton2.parentElement;
-                article.remove();
-                numbers.splice(0,1);
-                localStorage.setItem('Numbers', JSON.stringify(numbers));
-            });
-        }
-
-        else if (numbers.length > 1) {
-
-            const removeButtons1 = document.querySelectorAll('.removeButton');
-
-            removeButtons1.forEach(function(removeButton1) {
-
-                removeButton1.addEventListener('click', function () {
-
-                    removeItemMessageFunction ();
-
-                    removeButtons1.forEach(function(removeButtonNew1) {
-
-                        if (removeButtonNew1 === removeButton1) {
-                            const articles = listObjects.querySelectorAll('.article');
-                            let i = 0;
-                            const article = removeButton1.parentElement;
-
-                            articles.forEach(function (articleNew) {
-                                if(article === articleNew) {
-                                    i = i;
-                                    numbers = JSON.parse(localStorage.getItem('Numbers'));
-                                    numbers.splice(i, 1);
-                                    localStorage.setItem('Numbers', JSON.stringify(numbers)); 
-                                    updateGroceryListFunction(numbers);
-                                }
-                                else if(article !== articleNew) {
-                                    i++;
-                                }
-                            });
-                        }
-                    });
-                });
-            });
-        }
-    }
-});
+if(localStorageStatus !== null) {
+    const numbers = JSON.parse(localStorage.getItem('Numbers'));
+    updateGroceryListFunction(numbers);
+}
 
 // ---- Submit button event. ---
 
 submitButton.addEventListener('click', function () {
 
     let localStorageStatus = localStorage.getItem('Numbers');
-    const inputValue = inputBox.value;
+    const inputValue = inputBox.value;    
 
     if(inputValue.length > 0) {
-
-        setTimeout (showGoodMessageFunction = () => {
-            goodParameter.classList.add('showMessage');
-        }, 0);
+        goodParameter.classList.add('showMessage');
 
         if (localStorageStatus === null) {
             numbers = [inputValue];
@@ -169,37 +120,28 @@ submitButton.addEventListener('click', function () {
         }
         else if (localStorageStatus !== null) {
             numbers = JSON.parse(localStorage.getItem('Numbers'));
+            console.log(numbers);
             numbers.push(inputValue);
+            console.log(numbers);
             localStorage.setItem('Numbers', JSON.stringify(numbers));
         }
 
-        setItemsToListFunction(numbers);
+        updateGroceryListFunction(numbers);
         inputBox.value = ``;
 
         setTimeout (showGoodMessageFunction = () => {
             goodParameter.classList.remove('showMessage');
         }, 1000);
     }   
-
     else if(inputValue.length === 0) {
-        setTimeout (showBadMessageFunction = () => {
-            badParameter.classList.add('showMessage');
-        }, 0);
-
-        setTimeout (showBadMessageFunction = () => {
-            badParameter.classList.remove('showMessage');
-        }, 1000);
+        emptyBoxMessageFunction ();
     }
 });
+
+// ---- Clear local storage. ---
 
 clearListButton.addEventListener('click', function () {
     localStorage.clear();
     listObjects.innerHTML=``;
-    setTimeout (showClrMessageFunction = () => {
-        clearParameter.classList.add('showMessage');
-    }, 0);
-
-    setTimeout (showClrMessageFunction = () => {
-        clearParameter.classList.remove('showMessage');
-    }, 1000);
+    clearListMessageFunction ();
 });

@@ -189,6 +189,10 @@ article p {
     background-color: #012d34;
 }
 
+.articleNew {
+    display: none;
+}
+
 /* ----------------- CLEAR LIST SECTION. ------------------- */
 
 .clearListButton {
