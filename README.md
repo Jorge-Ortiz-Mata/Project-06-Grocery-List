@@ -3,11 +3,11 @@
 
 Information:
 
-> Name: **Project-06-Grocery-List**
-> Author: Jorge Ortiz Mata
-> Email: ortiz.mata.jorge@gmail.com
-> Location: San Luis Potosí S.L.P. México
-> Cellphone number: +52 (444) 576 3034
+- Name: **Project-06-Grocery-List**
+- Author: Jorge Ortiz Mata
+- Email: ortiz.mata.jorge@gmail.com
+- Location: San Luis Potosí S.L.P. México
+- Cellphone number: +52 (444) 576 3034
 
 Description: 
 
