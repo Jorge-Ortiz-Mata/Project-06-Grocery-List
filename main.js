@@ -1,6 +1,6 @@
 
 // # Project-06-Grocery-List.
-// ### Grcoery List where you can add items to list.
+// ### Grocery List is a list where you can add items in it using local storage.
 
 // Information:
 
@@ -16,7 +16,7 @@
 	// In this project you will be able to add any items to the
    	// list, where all of the items will be saved into the local 
    	// storage, and if you reload the website, the same items 
-    // will not disappear. ';
+    // will not disappear as well as other features. ';
    
    	// Take a look and see this project. All the information and files you
 	// will find on this repository.
