@@ -13,9 +13,9 @@ Description:
 
 	'Hello, I'm Jorge and I want to show you this project. 
 	 In this project you will be able to add any items to the
-   list, where all of the items will be saved into the local 
-   storage, and if you reload the website, the same items 
-   will not disappear as well as other features. ';
+   	 list, where all of the items will be saved into the local 
+   	 storage, and if you reload the website, the same items 
+   	 will not disappear as well as other features. ';
    
    Take a look and see this project. All the information and files you
 	 will find on this repository.
