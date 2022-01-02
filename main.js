@@ -37,26 +37,27 @@ updateGroceryListFunction = (numbers) => {
     }
     // ---- Remove buttons event. ---
 
-    const articles = document.querySelectorAll('.article');
     const removeButtons = document.querySelectorAll('.removeButton');
 
     removeButtons.forEach(function (removeButton) {
 
         removeButton.addEventListener('click', function () {
-            console.log(removeButtons);
+            let i = 0;
             removeButtons.forEach(function (removeButtonNew) {
-                let i = 0;
                 if(removeButton === removeButtonNew) {
-                    i++;
-                    console.log(i);
+                    i = i;
+                    numbers = JSON.parse(localStorage.getItem('Numbers'));
+                    numbers.splice(i, 1);
+                    localStorage.setItem('Numbers', JSON.stringify(numbers));
+                    updateGroceryListFunction(numbers);
                 }
                 else if (removeButton !== removeButtonNew) {
-                    i = i;
+                    i++;
                 }
             });
         removeItemMessageFunction();
+        });
     });
-});
 }
 
 // ---- Show Remove message on web app. ---
@@ -120,9 +121,7 @@ submitButton.addEventListener('click', function () {
         }
         else if (localStorageStatus !== null) {
             numbers = JSON.parse(localStorage.getItem('Numbers'));
-            console.log(numbers);
             numbers.push(inputValue);
-            console.log(numbers);
             localStorage.setItem('Numbers', JSON.stringify(numbers));
         }
 
