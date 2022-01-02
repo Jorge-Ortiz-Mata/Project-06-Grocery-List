@@ -27,4 +27,4 @@ Greetings :love_you_gesture:
 
 [Grocery List] - (https://jorge-ortiz-mata.github.io/Project-06-Grocery-List/)
 
-![](medis/ImageWebSite-Project-06-GroceryBudList.PNG)
+![](media/ImageWebSite-Project-06-GroceryBudList.PNG)
